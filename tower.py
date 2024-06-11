@@ -9,8 +9,6 @@ class Tower:
         self.projectiles = []
         self.damage = 10
 
-    def update(self):
-        # Logic to find and shoot at enemies
     def update(self, screen):
         # Logic to find and shoot at enemies
         for enemy in self.game.enemies:
