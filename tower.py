@@ -13,10 +13,11 @@ class Tower:
         # Logic to find and shoot at enemies
         for enemy in self.game.enemies:
             if self.in_range(enemy):
-                self.shoot(enemy)
+                self.shoot(enemy, screen)
 
         for projectile in self.projectiles:
             projectile.update()
+            projectile.draw(screen)
 
     def draw(self, screen):
         pygame.draw.circle(screen, (0, 255, 0), self.position, 20)
@@ -24,9 +25,8 @@ class Tower:
         distance = ((self.position[0] - enemy.position[0]) ** 2 + (self.position[1] - enemy.position[1]) ** 2) ** 0.5
         return distance <= self.range
 
-    def shoot(self, enemy):
+    def shoot(self, enemy, screen):
         projectile = Projectile(self.position, enemy)
         self.projectiles.append(projectile)
-        pygame.draw.circle(screen, (0, 255, 0), self.position, 20)
-        for projectile in self.projectiles:
-            projectile.draw(screen)
+        projectile = Projectile(self.position, enemy)
+        self.projectiles.append(projectile)
